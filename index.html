@@ -41,11 +41,11 @@
             <img src="https://i.postimg.cc/tgWqzB8p/Search-1.png alt=" "="">
           </div>
           </div>
-          <div id="account1" class="class-account class-account-common">
-            <!--<a href='signup.html'>--><div>
+          <div id="account1" class="class-account class-account-common" onclick="window.location.href='signup.html'">
+            <div >
               <img src="https://i.postimg.cc/RCb3PDNz/User.png" alt="">
-            </div></a>
-           <!-- <a href='signup.html'>--><div>Account</div>
+            </div>
+            <div >Account</div>
             <div class="chevronup">
               <img src="https://i.postimg.cc/DZHpvK2K/Chevron-Up.png" alt="">
             </div>
@@ -58,7 +58,7 @@
               <div>Sign Out</div>
             </div>
           </div>
-          <div onclick="window.location.href='./list.html'" class="class-account class-account-common">
+          <div onclick="window.location.href='list.html'" class="class-account class-account-common">
             <div>
               <img src="https://i.postimg.cc/B6TrjykP/Heart.png" alt="">
             </div>
@@ -83,7 +83,7 @@
         <div class="section-div">
         <div onclick="window.location.href='furniture.html'">Furniture</div>
           <div onclick="window.location.href='furniture.html'">Rugs</div>
-          <div onclick="window.location.href='https://www.overstock.com/Home-Garden/Home-Decor/3/dept.html '">Decor</div>
+          <div onclick="window.location.href=https://www.overstock.com/Home-Garden/Home-Decor/3/dept.html ">Decor</div>
           <div onclick="window.location.href='https://www.overstock.com/c/bedding?t=1'">Bed &amp; Bath</div>
           <div onclick="window.location.href='https://www.overstock.com/Home-Garden/Home-Improvement/36/dept.html'">Home Improvement</div>
           <div onclick="window.location.href='https://www.overstock.com/Home-Garden/Kitchen-Dining/2/dept.html'">Kitchen</div>
@@ -597,11 +597,11 @@
         navbar_div.innerHTML = navbar();
       
         let sectionDiv = document.querySelector(".section-div");
-        sectionDiv.addEventListener("mouseover", function () {
+        sectionDiv.addEventListener("mouseover",function(){
           let dropDownContainer = document.querySelector(".dropdown-content-part");
           dropDownContainer.style.display = "flex";
       
-          dropDownContainer.addEventListener("mouseout", function () {
+          dropDownContainer.addEventListener("mouseover", function () {
             dropDownContainer.style.display = "none";
           });
         });
