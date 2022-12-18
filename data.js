@@ -192,4 +192,4 @@ var obj5 = [
 },
 ]
 
-localStorage.setItem("ourstyle",JSON.stringify(obj5))
+localStorage.setItem("ourstyle",JSON.stringify(obj5)) 

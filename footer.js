@@ -61,4 +61,4 @@ function end(){
 </div>`
 
 }
-export  {footer,end};
+export  {footer,end}; 
