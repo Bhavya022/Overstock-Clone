@@ -29,7 +29,7 @@ function appendData(data,parent){
         if(rat>0 && rat<=1.4){
         rating.innerHTML = `${rat} &#11088 `;
          }
-         else if(rat>=1.5 && rat <2.4){
+         else if(rat>=1.5 && rat <2.4){ 
             rating.innerHTML = `${rat} &#11088 &#11088 `;
          }
          else if(rat>=2.5 && rat <=3.4){
