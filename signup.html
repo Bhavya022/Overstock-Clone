@@ -25,7 +25,7 @@
       <div class="signUp">
         <div>
           <h2>Create Account</h2>
-          <form action="" onsubmit="signup(e)">
+          <form action="">
             <label for="email">Email Address*</label>
             <input type="email" id="email" placeholder="Email" required />
             <div class="passwordDiv">
@@ -33,15 +33,15 @@
               <label for="confirmPassword">Confirm Password*</label>
               <input
                 type="password"
-                id="pw"
+                id="password"
                 placeholder="Password"
-                required i
+                required
               />
               <input
                 type="password"
-                id="pw1"
+                id="confirmPassword"
                 placeholder="Confirm Password"
-                required id="pw1"
+                required
               />
             </div>
             <div class="checkboxDiv">
@@ -52,7 +52,7 @@
                 Overstock.com delivered right to your inbox**
               </p>
             </div>
-            <button id="signup" >Create Account</button>
+            <button>Create Account</button>
           </form>
           <div class="bar">
             <div></div>
@@ -103,7 +103,7 @@
                 required
               />
             </div>
-            <button id="signin">Sign In</button>
+            <button>Sign In</button>
             <div><a href="">Forgot your password?</a></div>
           </form>
         </div>
@@ -112,27 +112,87 @@
     
     <div id="footer"></div>
     <div id="end"></div> 
-    <script > 
-    
-        function signup(e){
-   event.preventDefault();
-   //console.log("warning"); 
+    <script> 
+    let obj={
+      email:email, 
+      password:password,
+      confirmPassword : confirmPassword
+    }
+    let errorMessage = (err) => {
+  const errorDiv = document.querySelector("#errorMessage");
+  errorDiv.style.display = "block";
+  const error = document.createElement("p");
+  error.textContent = err;
 
-   var email = document.getElementById("email").value ;
-   var pw = document.getElementById("pw").value ;
-   var pw1 = document.getElementById("pw1").value ;
-   console.log(email,pw);
-   var obj ={
-    email:email,
-    pw:pw,
-   };
-   var json = JSON.stringify(obj);
-   localStorage.setItem(obj,json);
-   console.log("user added");
-}
+};
+const signUpBtn = document.querySelector(".signUp button");
+signUpBtn.addEventListener("click", async (e) => {
+  const checkbox = document.getElementById("checkbox").checked;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (
+    email === "" 
+  
+  ) {
+    alert("Please enter a valid email ");
+    return;
+  }else if (
+    
+    password === "" ||
+    confirmPassword === "" 
+  ) {
+    alert("Please enter a valid password");
+    return;
+  }
+  
+  else if (password != confirmPassword) {
+    e.preventDefault();
+    
+      alert("The passwords you have entered do not match. Please try again.")
+
+      alert("Password must contain at least 1 Uppercase , 1 lowercase , 1 number and 1 special Character.")
+    return;
+  } else if (password.length < 8 && password.length != 0) {
+    e.preventDefault();
+    errorMessage(
+      alert("Password must be a minimum of 8 characters and cannot exceed 70 characters")
+    );
+    errorMessage(
+      alert("Password must contain at least 1 Uppercase , 1 lowercase , 1 number and 1 special Character.")
+    );
+    return;
+  }else if(checkbox==false){
+    alert("please select checkbox");
+    return;
+  }   
+  else{
+    localStorage.setItem("email",email); 
+  localStorage.setItem("passowrd",password);
+ alert("Registered succesfully")
+  }
+  
+}); 
+const signIn = document.querySelector(".signIn button"); 
+signIn.addEventListener("click",function(){
+  var storedName = localStorage.getItem('email');
+    var storedPw = localStorage.getItem('passowrd');
+
+    var userName = document.getElementById('inputEmail');
+    var userPw = document.getElementById('inputPassword');
+    var userRemember = document.getElementById("rememberMe");
+
+    if(userName.value == storedName && userPw.value == storedPw){
+        alert('You are logged in.');
+    }else{
+        alert('Error on login');
+    }
+})
     </script>
   </body>
 </html>
+
 <script type="module">
   import { footer, end } from "/footer.js";
  import navbar from '/navbar.js'
@@ -140,7 +200,7 @@
  let navbar_div = document.getElementById("navbar");
  navbar_div.innerHTML = navbar();
 
- let sectionDiv = document.querySelector(".section-div ");
+ let sectionDiv = document.querySelector(".section-div > div");
  sectionDiv.addEventListener("mouseover", function () {
    let dropDownContainer = document.querySelector(".dropdown-content-part");
    dropDownContainer.style.display = "flex";
@@ -151,4 +211,4 @@
  });
  document.querySelector("#footer").innerHTML = footer();
  document.querySelector("#end").innerHTML = end();
-</script> 
+</script>
